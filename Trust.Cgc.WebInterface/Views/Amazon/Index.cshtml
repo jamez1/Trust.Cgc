@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Trust.Cgc.Core.Ec2Instance>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<table>
+    <tr>
+        <th>Instance Id</th>
+        <th>Ip</th>
+    </tr>
+    <tbody>
+        @foreach(var instance in Model){
+        <tr>
+            <td>@instance.InstanceId</td>
+            <td>@instance.PublicIpAddress</td>
+        </tr>
+        }
+    </tbody>
+</table>
