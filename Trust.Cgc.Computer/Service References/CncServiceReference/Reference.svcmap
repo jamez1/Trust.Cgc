@@ -19,7 +19,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:56001/cnc.asmx?op=FetchJob" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:56001/cnc.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="cnc.wsdl" MetadataType="Wsdl" ID="9c74c1ed-9b87-450d-a783-8d7fff3f0d6b" SourceId="1" SourceUrl="http://localhost:56001/cnc.asmx?wsdl" />

@@ -29,6 +29,12 @@ namespace Trust.Cgc.Computer.CncServiceReference {
         
         private long IdField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Trust.Cgc.Computer.CncServiceReference.ParamViewModel[] ParamsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Trust.Cgc.Computer.CncServiceReference.ArrayOfString LibrariesField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -78,6 +84,32 @@ namespace Trust.Cgc.Computer.CncServiceReference {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public Trust.Cgc.Computer.CncServiceReference.ParamViewModel[] Params {
+            get {
+                return this.ParamsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParamsField, value) != true)) {
+                    this.ParamsField = value;
+                    this.RaisePropertyChanged("Params");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public Trust.Cgc.Computer.CncServiceReference.ArrayOfString Libraries {
+            get {
+                return this.LibrariesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LibrariesField, value) != true)) {
+                    this.LibrariesField = value;
+                    this.RaisePropertyChanged("Libraries");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -86,6 +118,74 @@ namespace Trust.Cgc.Computer.CncServiceReference {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ParamViewModel", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ParamViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
+    [System.SerializableAttribute()]
+    public class ArrayOfString : System.Collections.Generic.List<string> {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -98,6 +198,13 @@ namespace Trust.Cgc.Computer.CncServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FetchJob", ReplyAction="*")]
         System.Threading.Tasks.Task<Trust.Cgc.Computer.CncServiceReference.FetchJobResponse> FetchJobAsync(Trust.Cgc.Computer.CncServiceReference.FetchJobRequest request);
+        
+        // CODEGEN: Generating message contract since element name results from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/JobComplete", ReplyAction="*")]
+        Trust.Cgc.Computer.CncServiceReference.JobCompleteResponse JobComplete(Trust.Cgc.Computer.CncServiceReference.JobCompleteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/JobComplete", ReplyAction="*")]
+        System.Threading.Tasks.Task<Trust.Cgc.Computer.CncServiceReference.JobCompleteResponse> JobCompleteAsync(Trust.Cgc.Computer.CncServiceReference.JobCompleteRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -168,6 +275,82 @@ namespace Trust.Cgc.Computer.CncServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class JobCompleteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="JobComplete", Namespace="http://tempuri.org/", Order=0)]
+        public Trust.Cgc.Computer.CncServiceReference.JobCompleteRequestBody Body;
+        
+        public JobCompleteRequest() {
+        }
+        
+        public JobCompleteRequest(Trust.Cgc.Computer.CncServiceReference.JobCompleteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class JobCompleteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string results;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string console;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public long id;
+        
+        public JobCompleteRequestBody() {
+        }
+        
+        public JobCompleteRequestBody(string results, string console, long id) {
+            this.results = results;
+            this.console = console;
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class JobCompleteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="JobCompleteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Trust.Cgc.Computer.CncServiceReference.JobCompleteResponseBody Body;
+        
+        public JobCompleteResponse() {
+        }
+        
+        public JobCompleteResponse(Trust.Cgc.Computer.CncServiceReference.JobCompleteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class JobCompleteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool JobCompleteResult;
+        
+        public JobCompleteResponseBody() {
+        }
+        
+        public JobCompleteResponseBody(bool JobCompleteResult) {
+            this.JobCompleteResult = JobCompleteResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CncSoapChannel : Trust.Cgc.Computer.CncServiceReference.CncSoap, System.ServiceModel.IClientChannel {
     }
@@ -218,6 +401,35 @@ namespace Trust.Cgc.Computer.CncServiceReference {
             inValue.Body = new Trust.Cgc.Computer.CncServiceReference.FetchJobRequestBody();
             inValue.Body.identifier = identifier;
             return ((Trust.Cgc.Computer.CncServiceReference.CncSoap)(this)).FetchJobAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Trust.Cgc.Computer.CncServiceReference.JobCompleteResponse Trust.Cgc.Computer.CncServiceReference.CncSoap.JobComplete(Trust.Cgc.Computer.CncServiceReference.JobCompleteRequest request) {
+            return base.Channel.JobComplete(request);
+        }
+        
+        public bool JobComplete(string results, string console, long id) {
+            Trust.Cgc.Computer.CncServiceReference.JobCompleteRequest inValue = new Trust.Cgc.Computer.CncServiceReference.JobCompleteRequest();
+            inValue.Body = new Trust.Cgc.Computer.CncServiceReference.JobCompleteRequestBody();
+            inValue.Body.results = results;
+            inValue.Body.console = console;
+            inValue.Body.id = id;
+            Trust.Cgc.Computer.CncServiceReference.JobCompleteResponse retVal = ((Trust.Cgc.Computer.CncServiceReference.CncSoap)(this)).JobComplete(inValue);
+            return retVal.Body.JobCompleteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Trust.Cgc.Computer.CncServiceReference.JobCompleteResponse> Trust.Cgc.Computer.CncServiceReference.CncSoap.JobCompleteAsync(Trust.Cgc.Computer.CncServiceReference.JobCompleteRequest request) {
+            return base.Channel.JobCompleteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Trust.Cgc.Computer.CncServiceReference.JobCompleteResponse> JobCompleteAsync(string results, string console, long id) {
+            Trust.Cgc.Computer.CncServiceReference.JobCompleteRequest inValue = new Trust.Cgc.Computer.CncServiceReference.JobCompleteRequest();
+            inValue.Body = new Trust.Cgc.Computer.CncServiceReference.JobCompleteRequestBody();
+            inValue.Body.results = results;
+            inValue.Body.console = console;
+            inValue.Body.id = id;
+            return ((Trust.Cgc.Computer.CncServiceReference.CncSoap)(this)).JobCompleteAsync(inValue);
         }
     }
 }

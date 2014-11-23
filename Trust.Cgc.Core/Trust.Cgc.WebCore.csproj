@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="AmazonInterface.cs" />
     <Compile Include="Job.cs" />
+    <Compile Include="JobContainer.cs" />
+    <Compile Include="JobExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

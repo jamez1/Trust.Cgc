@@ -21,8 +21,42 @@
           <s:element minOccurs="0" maxOccurs="1" name="Script" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfParamViewModel" />
+          <s:element minOccurs="0" maxOccurs="1" name="Libraries" type="tns:ArrayOfString" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="ArrayOfParamViewModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ParamViewModel" nillable="true" type="tns:ParamViewModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParamViewModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="JobComplete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="results" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="console" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JobCompleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobCompleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="FetchJobSoapIn">
@@ -31,10 +65,20 @@
   <wsdl:message name="FetchJobSoapOut">
     <wsdl:part name="parameters" element="tns:FetchJobResponse" />
   </wsdl:message>
+  <wsdl:message name="JobCompleteSoapIn">
+    <wsdl:part name="parameters" element="tns:JobComplete" />
+  </wsdl:message>
+  <wsdl:message name="JobCompleteSoapOut">
+    <wsdl:part name="parameters" element="tns:JobCompleteResponse" />
+  </wsdl:message>
   <wsdl:portType name="CncSoap">
     <wsdl:operation name="FetchJob">
       <wsdl:input message="tns:FetchJobSoapIn" />
       <wsdl:output message="tns:FetchJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JobComplete">
+      <wsdl:input message="tns:JobCompleteSoapIn" />
+      <wsdl:output message="tns:JobCompleteSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CncSoap" type="tns:CncSoap">
@@ -48,11 +92,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="JobComplete">
+      <soap:operation soapAction="http://tempuri.org/JobComplete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CncSoap12" type="tns:CncSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="FetchJob">
       <soap12:operation soapAction="http://tempuri.org/FetchJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JobComplete">
+      <soap12:operation soapAction="http://tempuri.org/JobComplete" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

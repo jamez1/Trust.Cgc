@@ -156,6 +156,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationServices\JobAs.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -296,9 +297,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Trust.Cgc.Core\Trust.Cgc.Core.csproj">
+    <ProjectReference Include="..\Trust.Cgc.Core\Trust.Cgc.WebCore.csproj">
       <Project>{47e26bcb-ed01-4c23-8b19-a7ab454cec80}</Project>
-      <Name>Trust.Cgc.Core</Name>
+      <Name>Trust.Cgc.WebCore</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

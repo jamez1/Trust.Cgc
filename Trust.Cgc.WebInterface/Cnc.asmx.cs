@@ -21,9 +21,27 @@ namespace Trust.Cgc.WebInterface
         [WebMethod]
         public JobViewModel FetchJob(string identifier)
         {
+            return null;
+
             var output = new JobViewModel();
 
+            output.Params = new List<JobViewModel.ParamViewModel>();
+            output.Params.Add(
+                new JobViewModel.ParamViewModel(){
+                    Name="test", 
+                    Value= "testVal"
+                });
+
             return output;
+        }
+
+
+        [WebMethod]
+        public bool JobComplete(string results, string console, long id, string computerId)
+        {
+            
+
+            return true;
         }
     }
 }
